@@ -37,14 +37,21 @@ export default class Home extends Component {
     // const { id } = target;
   };
 
+  handleSearch = async (product) => {
+    const getProductsByQuery = await api.getItensByQuery(product);
+    this.setState({dataProducts: getProductsByQuery.results})
+  }
+
   render() {
     const { isLoading, dataCategories, dataProducts } = this.state;
     return (
       <div className="bg-neutral-200 font-sans">
-        <Header />
-        <div className="flex flex-wrap">
-          <div className="w-1/5 ml-52 mt-10">
-            <p className="pl-16 text-lg font-extrabold underline decoration-double">Categorias</p>
+        <Header 
+          handleSearch = { this.handleSearch }
+        />
+        <div className="flex flex-wrap w-screen">
+          <div className="w-screen h-72 mt-16 mx-12 overflow-y-auto sm:w-1/5 sm:h-full sm:ml-12 sm:mr-20 sm:mt-10">
+            <p className="text-lg font-extrabold underline decoration-double">Categorias</p>
             {dataCategories.map((category) => (
               <Menu 
                 key={ category.id }
@@ -54,7 +61,7 @@ export default class Home extends Component {
               />
             ))}
           </div>
-          <div className="flex flex-wrap justify-evenly w-4/6 ml-2 mt-10">
+          <div className="flex flex-wrap justify-evenly w-screen sm:w-4/6 ml-2 mt-10">
             { isLoading && <Loading /> }
             { dataProducts.length > 0 && dataProducts.map((product) => (
               <div className="w-64 p-4" key={ product.id }>

@@ -4,13 +4,14 @@ export default class Menu extends Component {
   render() {
     const { id, name, handleClickMenu } = this.props;
     return (
-      <div className="pl-6 py-1">
-        <p
+      <div className="py-1">
+        <li
           id={id}
           onClick={handleClickMenu}
+          className="list-none cursor-pointer"
         >
           {name}
-        </p>
+        </li>
       </div>
     )
   }

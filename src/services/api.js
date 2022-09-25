@@ -10,3 +10,10 @@ export async function getItensByCategories(categoryId) {
   const data = await fetch(URL);
   return data;
 }
+
+export async function getItensByQuery(product) {
+  const URL = `https://api.mercadolibre.com/sites/MLB/search?q=${product}`;
+  const data = await fetch(URL);
+  const result = await data.json();
+  return result;
+}
