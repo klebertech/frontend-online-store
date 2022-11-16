@@ -27,6 +27,8 @@ export default class ProductPage extends Component {
       warranty: result.warranty,
       code: result.id,
       sellerId: result.seller_id,
+      quantity: result.available_quantity,
+      sold: result.sold_quantity,
     });
     console.log(result);
   };
@@ -39,9 +41,11 @@ export default class ProductPage extends Component {
       warranty,
       code,
       sellerId,
+      quantity,
+      sold,
     } = this.state;
     return (
-      <div className="bg-neutral-200 font-sans h-screen">
+      <div className="bg-white font-sans h-full">
         <Header />
         {<SingleProduct
           title={ title }
@@ -50,6 +54,8 @@ export default class ProductPage extends Component {
           warranty={ warranty }
           code={ code }
           sellerId={ sellerId }
+          quantity={ quantity }
+          sold={ sold }
         />}
         {image.url}
       </div>
