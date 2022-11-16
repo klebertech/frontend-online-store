@@ -4,6 +4,7 @@ Projeto criado para consumo da api do Mercado Livre para exibição de produtos 
 categorias usando React + Tailwind
 
 `npm install`
+
 `npm start`
 
 ## Link da api utilizada:
