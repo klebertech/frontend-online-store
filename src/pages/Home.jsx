@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Header from '../components/Header';
 import Loading from '../components/Loading';
-import Menu from '../components/Menu';
+// import Menu from '../components/Menu';
 import ProductCard from '../components/ProductCard';
 import * as api from '../services/api'
 
@@ -50,18 +50,21 @@ export default class Home extends Component {
           handleSearch = { this.handleSearch }
         />
         <div className="flex flex-wrap w-screen">
-          <div className="w-screen h-72 mt-10 mx-12 overflow-y-auto lg:w-1/5 sm:w-1/4 sm:h-full sm:ml-12 sm:mr-20 sm:mt-10">
-            <p className="text-lg font-extrabold underline decoration-double">Categorias</p>
-            {dataCategories.map((category) => (
-              <Menu 
-                key={ category.id }
-                id={ category.id }
-                name={ category.name }
-                handleClickMenu={ this.handleClickMenu }
-              />
-            ))}
+          <div className="w-screen h-30 mt-10 mx-12 overflow-y-auto lg:w-1/5 sm:w-1/4 sm:h-full sm:ml-12 sm:mr-20 sm:mt-10">
+            <p className="text-lg font-extrabold underline decoration-double mb-6">Categorias</p>
+            <select name="categories" id="categories">
+              {dataCategories.map((category) => (
+                // <Menu 
+                //   key={ category.id }
+                //   id={ category.id }
+                //   name={ category.name }
+                //   handleClickMenu={ this.handleClickMenu }
+                // />
+                <option value={category.name}>{category.name}</option>
+              ))}
+            </select>
           </div>
-          <div className="flex flex-wrap justify-evenly w-screen sm:w-1/3 lg:w-4/6 ml-2 mt-10">
+          <div className="flex flex-wrap justify-evenly w-screen sm:w-1/3 lg:w-4/6 mt-10">
             { isLoading && <Loading /> }
             { dataProducts.length > 0 && dataProducts.map((product) => (
               <div className="w-64 p-4" key={ product.id }>

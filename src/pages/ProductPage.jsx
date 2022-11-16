@@ -45,7 +45,7 @@ export default class ProductPage extends Component {
       sold,
     } = this.state;
     return (
-      <div className="bg-neutral-200 font-sans h-full">
+      <div className="bg-white font-sans h-full">
         <Header />
         {<SingleProduct
           title={ title }
